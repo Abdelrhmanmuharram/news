@@ -1,4 +1,8 @@
 {
     "home":"Home",
-    "goodMorningHereisSomeNewsForYou":"Good Morning Here is Some News For You"
+    "goodMorningHereisSomeNewsForYou":"Good Morning Here is Some News For You",
+    "newsApp": "News App",
+    "goToHome": "Go To Home",
+    "theme": "Theme",
+    "language": "Language"
 }

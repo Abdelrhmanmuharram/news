@@ -14,4 +14,16 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get goodMorningHereisSomeNewsForYou =>
       'Good Morning Here is Some News For You';
+
+  @override
+  String get newsApp => 'News App';
+
+  @override
+  String get goToHome => 'Go To Home';
+
+  @override
+  String get theme => 'Theme';
+
+  @override
+  String get language => 'Language';
 }

@@ -13,4 +13,16 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get goodMorningHereisSomeNewsForYou => 'صباح الخير، إليك بعض الأخبار.';
+
+  @override
+  String get newsApp => 'تطبيق لاخبار';
+
+  @override
+  String get goToHome => 'العودة للصفحه الرئيسية';
+
+  @override
+  String get theme => 'الشكل';
+
+  @override
+  String get language => 'اللغة';
 }

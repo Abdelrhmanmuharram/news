@@ -1,4 +1,9 @@
 {
     "Home":"الصفحه الرئيسية",
-    "goodMorningHereisSomeNewsForYou":"صباح الخير، إليك بعض الأخبار."
+    "goodMorningHereisSomeNewsForYou":"صباح الخير، إليك بعض الأخبار.",
+    "newsApp": "تطبيق لاخبار",
+    "goToHome": "العودة للصفحه الرئيسية",
+    "theme": "الشكل",
+    "language": "اللغة"
+
 }
