@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:news/app_theme.dart';
 import 'package:news/models/category_model.dart';
 
+// ignore: must_be_immutable
 class CategoryItem extends StatelessWidget {
   CategoryModel category;
   int index;

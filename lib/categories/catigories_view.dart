@@ -3,8 +3,8 @@ import 'package:news/categories/category_item.dart';
 import 'package:news/l10n/app_localizations.dart';
 import 'package:news/models/category_model.dart';
 
-class CatigoriseView extends StatelessWidget {
-  const CatigoriseView({super.key});
+class CatigoriesView extends StatelessWidget {
+  const CatigoriesView({super.key});
 
   @override
   Widget build(BuildContext context) {
