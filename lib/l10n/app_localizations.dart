@@ -97,6 +97,18 @@ abstract class AppLocalizations {
     Locale('ar'),
     Locale('en'),
   ];
+
+  /// No description provided for @home.
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get home;
+
+  /// No description provided for @goodMorningHereisSomeNewsForYou.
+  ///
+  /// In en, this message translates to:
+  /// **'Good Morning Here is Some News For You'**
+  String get goodMorningHereisSomeNewsForYou;
 }
 
 class _AppLocalizationsDelegate

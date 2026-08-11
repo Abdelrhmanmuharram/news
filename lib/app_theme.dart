@@ -7,6 +7,7 @@ class AppTheme {
 
   static ThemeData lightTheme = ThemeData();
   static ThemeData darkTheme = ThemeData(
+    scaffoldBackgroundColor: black,
     appBarTheme: AppBarThemeData(
       backgroundColor: black,
       foregroundColor: white,
@@ -14,10 +15,11 @@ class AppTheme {
       titleTextStyle: TextStyle(fontSize: 20, color: white, fontWeight: .w500),
     ),
     textTheme: TextTheme(
-      headlineSmall: TextStyle(fontSize: 24, color: white, fontWeight: .w500),
-      titleLarge: TextStyle(fontSize: 20, color: white, fontWeight: .w500),
-      titleMedium: TextStyle(fontSize: 16, color: white, fontWeight: .w500),
-      titleSmall: TextStyle(fontSize: 12, color: white, fontWeight: .w500),
-    )
+      headlineSmall: TextStyle(fontSize: 32, color: black, fontWeight: .bold),
+      titleLarge: TextStyle(fontSize: 24, color: white, fontWeight: .w500),
+      titleMedium: TextStyle(fontSize: 18, color: white, fontWeight: .w500),
+      titleSmall: TextStyle(fontSize: 16, color: white, fontWeight: .w500),
+      labelLarge: TextStyle(fontSize: 12, color: white, fontWeight: .w500),
+    ),
   );
 }
