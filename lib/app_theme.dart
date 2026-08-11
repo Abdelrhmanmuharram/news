@@ -20,7 +20,7 @@ class AppTheme {
       titleMedium: TextStyle(fontSize: 18, color: white, fontWeight: .bold),
       titleSmall: TextStyle(fontSize: 16, color: white, fontWeight: .bold),
       labelMedium: TextStyle(fontSize: 14, color: white, fontWeight: .w500),
-      labelLarge: TextStyle(fontSize: 12, color: white, fontWeight: .w500),
+      labelLarge: TextStyle(fontSize: 12, color: gray, fontWeight: .w500),
     ),
   );
 }
