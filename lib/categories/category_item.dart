@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:news/app_theme.dart';
 import 'package:news/models/category_model.dart';
+import 'package:news/providers/settings_provider.dart';
+import 'package:provider/provider.dart';
 
 // ignore: must_be_immutable
 class CategoryItem extends StatelessWidget {
@@ -10,12 +12,13 @@ class CategoryItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SettingsProvider settingsProvider = Provider.of<SettingsProvider>(context);
     return Container(
       height: MediaQuery.sizeOf(context).height * 0.25,
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(24),
-        color: AppTheme.white,
+        color: settingsProvider.isDark ? AppTheme.white : AppTheme.black,
       ),
       clipBehavior: .antiAlias,
       child: Stack(

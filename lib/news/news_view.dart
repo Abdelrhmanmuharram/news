@@ -3,6 +3,8 @@ import 'package:news/app_theme.dart';
 import 'package:news/models/source_model.dart';
 import 'package:news/news/news_item.dart';
 import 'package:news/news/news_tab_item.dart';
+import 'package:news/providers/settings_provider.dart';
+import 'package:provider/provider.dart';
 
 class NewsView extends StatefulWidget {
   String categoryId;
@@ -20,6 +22,7 @@ class _NewsViewState extends State<NewsView> {
   );
   @override
   Widget build(BuildContext context) {
+    SettingsProvider settingsProvider = Provider.of<SettingsProvider>(context);
     return Column(
       children: [
         DefaultTabController(
@@ -28,7 +31,9 @@ class _NewsViewState extends State<NewsView> {
             isScrollable: true,
             dividerColor: Colors.transparent,
             tabAlignment: .start,
-            indicatorColor: AppTheme.white,
+            indicatorColor: settingsProvider.isDark
+                ? AppTheme.white
+                : AppTheme.black,
             tabs: sources
                 .map(
                   (source) => NewsTabItem(

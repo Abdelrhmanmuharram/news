@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:news/app_theme.dart';
+import 'package:news/drawer/language_bottom_sheet.dart';
+import 'package:news/drawer/theme_bottom_sheet.dart';
 import 'package:news/l10n/app_localizations.dart';
 
 class DrawerItem extends StatelessWidget {
@@ -50,7 +52,10 @@ class DrawerItem extends StatelessWidget {
                       SizedBox(width: 8),
                       Text(
                         appLocalizations.goToHome,
-                        style: textTheme.titleMedium!.copyWith(fontSize: 20),
+                        style: textTheme.bodyLarge!.copyWith(
+                          fontSize: 20,
+                          color: AppTheme.white,
+                        ),
                       ),
                     ],
                   ),
@@ -69,9 +74,50 @@ class DrawerItem extends StatelessWidget {
                     SizedBox(width: 8),
                     Text(
                       appLocalizations.theme,
-                      style: textTheme.titleMedium!.copyWith(fontSize: 20),
+                      style: textTheme.bodyLarge!.copyWith(
+                        fontSize: 20,
+                        color: AppTheme.white,
+                      ),
                     ),
                   ],
+                ),
+                const SizedBox(height: 8),
+                Container(
+                  padding: EdgeInsets.all(16),
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    border: Border.all(color: AppTheme.white),
+                  ),
+                  child: Row(
+                    children: [
+                      Text(
+                        appLocalizations.dark,
+                        style: textTheme.bodyLarge!.copyWith(
+                          fontSize: 20,
+                          color: AppTheme.white,
+                        ),
+                      ),
+                      Spacer(),
+                      GestureDetector(
+                        onTap: () {
+                          showModalBottomSheet(
+                            context: context,
+                            backgroundColor: Colors.transparent,
+                            elevation: 0,
+                            isScrollControlled: true,
+                            builder: (context) {
+                              return const ThemeBottomSheet();
+                            },
+                          );
+                        },
+                        child: Icon(
+                          Icons.arrow_right_alt,
+                          color: AppTheme.white,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
                 const SizedBox(height: 24),
                 Divider(),
@@ -87,9 +133,50 @@ class DrawerItem extends StatelessWidget {
                     SizedBox(width: 8),
                     Text(
                       appLocalizations.language,
-                      style: textTheme.titleMedium!.copyWith(fontSize: 20),
+                      style: textTheme.bodyLarge!.copyWith(
+                        fontSize: 20,
+                        color: AppTheme.white,
+                      ),
                     ),
                   ],
+                ),
+                const SizedBox(height: 8),
+                Container(
+                  padding: EdgeInsets.all(16),
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    border: Border.all(color: AppTheme.white),
+                  ),
+                  child: Row(
+                    children: [
+                      Text(
+                        appLocalizations.english,
+                        style: textTheme.bodyLarge!.copyWith(
+                          fontSize: 20,
+                          color: AppTheme.white,
+                        ),
+                      ),
+                      Spacer(),
+                      GestureDetector(
+                        onTap: () {
+                          showModalBottomSheet(
+                            context: context,
+                            backgroundColor: Colors.transparent,
+                            elevation: 0,
+                            isScrollControlled: true,
+                            builder: (context) {
+                              return const LanguageBottomSheet();
+                            },
+                          );
+                        },
+                        child: Icon(
+                          Icons.arrow_right_alt,
+                          color: AppTheme.white,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
