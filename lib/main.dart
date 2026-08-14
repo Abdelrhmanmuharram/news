@@ -5,10 +5,13 @@ import 'package:news/l10n/app_localizations.dart';
 import 'package:news/providers/settings_provider.dart';
 import 'package:news/shared_preferences_service.dart';
 import 'package:provider/provider.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SharedPreferencesService.init();
+  timeago.setLocaleMessages('ar', timeago.ArMessages());
+
   runApp(
     MultiProvider(
       providers: [ChangeNotifierProvider(create: (_) => SettingsProvider())],
@@ -32,6 +35,7 @@ class NewsApp extends StatelessWidget {
       themeMode: settingsProvider.themeMode,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
+      locale: Locale(settingsProvider.languageCode),
     );
   }
 }

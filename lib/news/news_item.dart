@@ -43,7 +43,13 @@ class NewsItem extends StatelessWidget {
             children: [
               Text('By: Muharram', style: textTheme.labelLarge),
               Spacer(),
-              Text(timeago.format(dateTime), style: textTheme.labelLarge),
+              Text(
+                timeago.format(
+                  dateTime,
+                  locale: settingsProvider.isArabic ? 'ar' : 'en',
+                ),
+                style: textTheme.labelLarge,
+              ),
             ],
           ),
         ],

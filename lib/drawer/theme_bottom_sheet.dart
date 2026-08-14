@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:news/l10n/app_localizations.dart';
-import 'package:news/models/language_model.dart';
 import 'package:news/providers/settings_provider.dart';
 import 'package:provider/provider.dart';
 

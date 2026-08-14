@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:news/l10n/app_localizations.dart';
 import 'package:news/models/language_model.dart';
+import 'package:news/providers/settings_provider.dart';
+import 'package:provider/provider.dart';
 
 class LanguageBottomSheet extends StatelessWidget {
   const LanguageBottomSheet({super.key});
@@ -8,6 +10,7 @@ class LanguageBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appLocalizations = AppLocalizations.of(context)!;
+    SettingsProvider settingsProvider = Provider.of<SettingsProvider>(context);
     return Padding(
       padding: const EdgeInsets.all(8.0),
 
@@ -59,6 +62,7 @@ class LanguageBottomSheet extends StatelessWidget {
                   color: Colors.white54,
                 ),
                 onTap: () {
+                  settingsProvider.changeLanguage(language.code);
                   Navigator.pop(context);
                   debugPrint('Selected language: ${language.code}');
                 },

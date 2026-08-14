@@ -1,18 +1,27 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPreferencesService {
-  static late SharedPreferences preferences;
+  static late SharedPreferences prefe;
   static const String themeKey = 'theme';
+  static const String languageKey = 'language';
 
   static Future<void> init() async {
-    preferences = await SharedPreferences.getInstance();
+    prefe = await SharedPreferences.getInstance();
   }
 
   static Future<void> saveTheme(bool isDark) async {
-    await preferences.setBool(themeKey, isDark);
+    await prefe.setBool(themeKey, isDark);
   }
 
   static bool getTheme() {
-    return preferences.getBool(themeKey) ?? false;
+    return prefe.getBool(themeKey) ?? false;
+  }
+
+  static Future<void> saveLanguage(String languageCode) async {
+    await prefe.setString(languageKey, languageCode);
+  }
+
+  static String getLanguage() {
+    return prefe.getString(languageKey) ?? 'en';
   }
 }
