@@ -37,4 +37,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get english => 'الانجليزيه';
+
+  @override
+  String get viewFullArticle => 'عرض المقال الكامل';
 }
