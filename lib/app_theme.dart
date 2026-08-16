@@ -36,6 +36,7 @@ class AppTheme {
     textTheme: TextTheme(
       headlineSmall: TextStyle(fontSize: 32, color: black, fontWeight: .bold),
       titleLarge: TextStyle(fontSize: 24, color: white, fontWeight: .w500),
+      bodyLarge: TextStyle(fontSize: 20, color: white, fontWeight: .bold),
       titleMedium: TextStyle(fontSize: 18, color: white, fontWeight: .bold),
       titleSmall: TextStyle(fontSize: 16, color: white, fontWeight: .bold),
       labelMedium: TextStyle(fontSize: 14, color: white, fontWeight: .w500),

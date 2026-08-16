@@ -10,21 +10,37 @@ class CategoryModel {
   });
 
   static List<CategoryModel> categories = [
-    CategoryModel(id: '', name: 'General', imageName: 'general'),
-    CategoryModel(id: '', name: 'Business', imageName: 'business'),
-    CategoryModel(id: '', name: 'Sport', imageName: 'sport'),
-    CategoryModel(id: '', name: 'Technology', imageName: 'technology'),
-    CategoryModel(id: '', name: 'Entertainment', imageName: 'entertainment'),
-    CategoryModel(id: '', name: 'Health', imageName: 'health'),
-    CategoryModel(id: '', name: 'Science', imageName: 'science'),
+    CategoryModel(id: 'general', name: 'General', imageName: 'general'),
+    CategoryModel(id: 'business', name: 'Business', imageName: 'business'),
+    CategoryModel(id: 'sports', name: 'Sport', imageName: 'sport'),
+    CategoryModel(
+      id: 'technology',
+      name: 'Technology',
+      imageName: 'technology',
+    ),
+    CategoryModel(
+      id: 'entertainment',
+      name: 'Entertainment',
+      imageName: 'entertainment',
+    ),
+    CategoryModel(id: 'health', name: 'Health', imageName: 'health'),
+    CategoryModel(id: 'science', name: 'Science', imageName: 'science'),
   ];
   static List<CategoryModel> categoriesArabic = [
-    CategoryModel(id: '', name: 'عام', imageName: 'general_arabic'),
-    CategoryModel(id: '', name: 'عمل', imageName: 'busniess_arabic'),
-    CategoryModel(id: '', name: 'رياضة', imageName: 'sport_arabic'),
-    CategoryModel(id: '', name: 'تكنولوجيا', imageName: 'technology_arabic'),
-    CategoryModel(id: '', name: 'ترفيه', imageName: 'entertainment_arabic'),
-    CategoryModel(id: '', name: 'صحة', imageName: 'health_arabic'),
-    CategoryModel(id: '', name: 'علوم', imageName: 'science_arabic'),
+    CategoryModel(id: 'general', name: 'عام', imageName: 'general_arabic'),
+    CategoryModel(id: 'business', name: 'عمل', imageName: 'busniess_arabic'),
+    CategoryModel(id: 'sports', name: 'رياضة', imageName: 'sport_arabic'),
+    CategoryModel(
+      id: 'technology',
+      name: 'تكنولوجيا',
+      imageName: 'technology_arabic',
+    ),
+    CategoryModel(
+      id: 'entertainment',
+      name: 'ترفيه',
+      imageName: 'entertainment_arabic',
+    ),
+    CategoryModel(id: 'health', name: 'صحة', imageName: 'health_arabic'),
+    CategoryModel(id: 'science', name: 'علوم', imageName: 'science_arabic'),
   ];
 }

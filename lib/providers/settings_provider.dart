@@ -21,6 +21,7 @@ class SettingsProvider with ChangeNotifier {
   }
 
   void changeLanguage(String language) {
+    if (languageCode == language) return;
     languageCode = language;
     SharedPreferencesService.saveLanguage(language);
     notifyListeners();
