@@ -13,7 +13,6 @@ class LanguageBottomSheet extends StatelessWidget {
     SettingsProvider settingsProvider = Provider.of<SettingsProvider>(context);
     return Padding(
       padding: const EdgeInsets.all(8.0),
-
       child: Container(
         width: double.infinity,
         padding: const EdgeInsets.all(16),
