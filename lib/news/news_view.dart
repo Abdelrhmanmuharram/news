@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:news/api/api_service.dart';
 import 'package:news/app_theme.dart';
 import 'package:news/models/news_response/news.dart';
+import 'package:news/models/news_response/news_response.dart';
 import 'package:news/models/sources_response/source.dart';
 import 'package:news/models/sources_response/sources_response.dart';
 import 'package:news/news/news_item.dart';
@@ -12,8 +13,9 @@ import 'package:news/widgets/loading_indicator.dart';
 import 'package:provider/provider.dart';
 
 class NewsView extends StatefulWidget {
-  String categoryId;
-  NewsView({super.key, required this.categoryId});
+  String? categoryId;
+  NewsResponse? searchResult;
+  NewsView({super.key, this.categoryId, this.searchResult});
 
   @override
   State<NewsView> createState() => _NewsViewState();
@@ -26,12 +28,23 @@ class _NewsViewState extends State<NewsView> {
   @override
   void initState() {
     super.initState();
-    getSourcesFuture = ApiService.getSources(widget.categoryId);
+    if (widget.searchResult == null) {
+      getSourcesFuture = ApiService.getSources(widget.categoryId!);
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     SettingsProvider settingsProvider = Provider.of<SettingsProvider>(context);
+    if (widget.searchResult != null) {
+      List<News> newsList = widget.searchResult!.newsList ?? [];
+      return ListView.separated(
+        padding: EdgeInsetsGeometry.directional(top: 16, start: 16, end: 16),
+        itemBuilder: (_, index) => NewsItem(news: newsList[index]),
+        separatorBuilder: (_, _) => SizedBox(height: 16),
+        itemCount: newsList.length,
+      );
+    }
     return FutureBuilder(
       future: getSourcesFuture,
       builder: (context, snapshot) {

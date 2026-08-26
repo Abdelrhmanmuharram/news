@@ -42,10 +42,15 @@ class NewsItem extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(16),
               clipBehavior: Clip.antiAlias,
-              child: news.urlToImage!.isEmpty
-                  ? const Center(child: LoadingIndicator())
+              child: (news.urlToImage ?? '').isEmpty
+                  ? Image.network(
+                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6_PU5E9fM0J55rVaLOtsmrYOTdm4y9xPqMXlpMRojvuCE8_wQRJYL5ac&s=10',
+                      height: MediaQuery.sizeOf(context).height * 0.25,
+                      width: double.infinity,
+                      fit: BoxFit.cover,
+                    )
                   : Image.network(
-                      news.urlToImage!,
+                      news.urlToImage ?? '',
                       height: MediaQuery.sizeOf(context).height * 0.25,
                       width: double.infinity,
                       fit: BoxFit.fill,

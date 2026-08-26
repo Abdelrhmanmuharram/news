@@ -25,6 +25,25 @@ class AppTheme {
       ),
     ),
 
+    textSelectionTheme: TextSelectionThemeData(cursorColor: black),
+
+    inputDecorationTheme: InputDecorationTheme(
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: BorderSide(color: black),
+      ),
+
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: BorderSide(color: black),
+      ),
+
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: BorderSide(color: black),
+      ),
+    ),
+
     textTheme: TextTheme(
       headlineSmall: TextStyle(fontSize: 32, color: white, fontWeight: .bold),
       bodyLarge: TextStyle(fontSize: 20, color: white, fontWeight: .bold),
@@ -42,6 +61,23 @@ class AppTheme {
       foregroundColor: white,
       centerTitle: true,
       titleTextStyle: TextStyle(fontSize: 20, color: white, fontWeight: .w500),
+    ),
+
+    textSelectionTheme: TextSelectionThemeData(cursorColor: white),
+
+    inputDecorationTheme: InputDecorationTheme(
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: BorderSide(color: white),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: BorderSide(color: white),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: BorderSide(color: white),
+      ),
     ),
 
     elevatedButtonTheme: ElevatedButtonThemeData(
