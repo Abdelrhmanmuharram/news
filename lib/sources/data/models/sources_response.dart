@@ -3,7 +3,6 @@ import 'source.dart';
 class SourcesResponse {
   String? status;
   List<Source>? sources;
-
   SourcesResponse({this.status, this.sources});
 
   factory SourcesResponse.fromJson(Map<String, dynamic> json) {

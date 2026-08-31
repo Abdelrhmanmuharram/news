@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:news/app_theme.dart';
 import 'package:news/l10n/app_localizations.dart';
-import 'package:news/models/news_response/news.dart';
+import 'package:news/news/data/model/news.dart';
 import 'package:news/providers/settings_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';

@@ -2,13 +2,12 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:news/api/api_service.dart';
 import 'package:news/categories/catigories_view.dart';
 import 'package:news/drawer/drawer_item.dart';
 import 'package:news/l10n/app_localizations.dart';
 import 'package:news/models/category_model.dart';
-import 'package:news/models/news_response/news_response.dart';
-import 'package:news/news/news_view.dart';
+import 'package:news/news/view/widgets/news_view.dart';
+import 'package:news/news/view_model/news_view_model.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -22,8 +21,8 @@ class _HomeScreenState extends State<HomeScreen> {
   final TextEditingController searchController = TextEditingController();
   Timer? searchTimer;
   bool isSearchOpen = false;
-  NewsResponse? searchResult;
   CategoryModel? selectedCategory;
+  NewsViewModel newsViewModel = NewsViewModel();
 
   @override
   void dispose() {
@@ -46,15 +45,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   onChanged: (value) {
                     searchTimer?.cancel();
                     if (value.isEmpty) {
-                      setState(() {
-                        searchResult = null;
-                      });
+                      setState(() {});
                       return;
                     }
                     searchTimer = Timer(
                       const Duration(milliseconds: 500),
                       () async {
-                        searchResult = await ApiService.searchNews(value);
+                        await newsViewModel.searchNews(value);
                         setState(() {});
                       },
                     );
@@ -77,7 +74,6 @@ class _HomeScreenState extends State<HomeScreen> {
               onPressed: () {
                 setState(() {
                   isSearchOpen = false;
-                  searchResult = null;
                   searchController.clear();
                 });
               },
@@ -104,8 +100,8 @@ class _HomeScreenState extends State<HomeScreen> {
       drawer: isSearchOpen
           ? null
           : DrawerItem(onGoToHomeClick: resetSelectedCategoty),
-      body: searchResult != null
-          ? NewsView(searchResult: searchResult)
+      body: isSearchOpen && searchController.text.isNotEmpty
+          ? NewsView(searchResult: newsViewModel.search)
           : selectedCategory == null
           ? CatigoriesView(onSelectedCategory: onSelectedCategory)
           : NewsView(categoryId: selectedCategory!.id),

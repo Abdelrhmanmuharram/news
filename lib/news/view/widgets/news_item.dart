@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:news/app_theme.dart';
-import 'package:news/models/news_response/news.dart';
-import 'package:news/news/full_news_item.dart';
+import 'package:news/news/data/model/news.dart';
+import 'package:news/news/view/widgets/full_news_item.dart';
 import 'package:news/providers/settings_provider.dart';
 import 'package:news/widgets/loading_indicator.dart';
 import 'package:provider/provider.dart';
