@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:news/app_theme.dart';
-import 'package:news/home_screen.dart';
+import 'package:news/shared/app_theme.dart';
+import 'package:news/home/view/screens/home_screen.dart';
 import 'package:news/l10n/app_localizations.dart';
 import 'package:news/providers/settings_provider.dart';
-import 'package:news/shared_preferences_service.dart';
+import 'package:news/shared/shared_preferences_service.dart';
 import 'package:provider/provider.dart';
 import 'package:timeago/timeago.dart' as timeago;
 

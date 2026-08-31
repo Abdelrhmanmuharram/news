@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:news/shared_preferences_service.dart';
+import 'package:news/shared/shared_preferences_service.dart';
 
 class SettingsProvider with ChangeNotifier {
   ThemeMode themeMode = .system;

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:news/app_theme.dart';
-import 'package:news/drawer/language_bottom_sheet.dart';
-import 'package:news/drawer/theme_bottom_sheet.dart';
+import 'package:news/shared/app_theme.dart';
+import 'package:news/home/view/widgets/language_bottom_sheet.dart';
+import 'package:news/home/view/widgets/theme_bottom_sheet.dart';
 import 'package:news/l10n/app_localizations.dart';
 import 'package:news/providers/settings_provider.dart';
 import 'package:provider/provider.dart';

@@ -2,10 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:news/categories/catigories_view.dart';
-import 'package:news/drawer/drawer_item.dart';
+import 'package:news/categories/view/widgets/catigories_view.dart';
+import 'package:news/home/view/widgets/drawer_item.dart';
 import 'package:news/l10n/app_localizations.dart';
-import 'package:news/models/category_model.dart';
+import 'package:news/categories/data/model/category_model.dart';
 import 'package:news/news/view/widgets/news_view.dart';
 import 'package:news/news/view_model/news_view_model.dart';
 

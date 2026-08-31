@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:news/app_theme.dart';
+import 'package:news/shared/app_theme.dart';
 import 'package:news/l10n/app_localizations.dart';
 import 'package:news/news/data/model/news.dart';
 import 'package:news/providers/settings_provider.dart';
