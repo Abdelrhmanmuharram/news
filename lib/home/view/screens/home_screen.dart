@@ -8,6 +8,7 @@ import 'package:news/l10n/app_localizations.dart';
 import 'package:news/categories/data/model/category_model.dart';
 import 'package:news/news/view/widgets/news_view.dart';
 import 'package:news/news/view_model/news_view_model.dart';
+import 'package:news/shared/service_locator.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -22,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Timer? searchTimer;
   bool isSearchOpen = false;
   CategoryModel? selectedCategory;
-  NewsViewModel newsViewModel = NewsViewModel();
+  NewsViewModel newsViewModel = NewsViewModel(ServiceLocator.newsRepository);
 
   @override
   void dispose() {

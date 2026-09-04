@@ -3,7 +3,8 @@ import 'package:news/news/data/model/news.dart';
 import 'package:news/news/data/repositories/news_repository.dart';
 
 class NewsViewModel with ChangeNotifier {
-  NewsRepository repository = NewsRepository();
+  NewsRepository repository;
+  NewsViewModel(this.repository);
   List<News> news = [];
   List<News> search = [];
   String? errorMessage;

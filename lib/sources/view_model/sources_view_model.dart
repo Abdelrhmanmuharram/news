@@ -3,7 +3,8 @@ import 'package:news/sources/data/models/source.dart';
 import 'package:news/sources/data/repositories/source_repository.dart';
 
 class SourcesViewModel with ChangeNotifier {
-  SourceRepository repository = SourceRepository();
+  SourceRepository repository;
+  SourcesViewModel(this.repository);
   List<Source> sources = [];
   bool isLoading = false;
   String? errorMessage;

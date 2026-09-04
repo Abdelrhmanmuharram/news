@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:news/shared/app_theme.dart';
 import 'package:news/news/data/model/news.dart';
 import 'package:news/news/view_model/news_view_model.dart';
+import 'package:news/shared/service_locator.dart';
 import 'package:news/sources/data/models/source.dart';
 import 'package:news/news/view/widgets/news_item.dart';
 import 'package:news/sources/view/widgets/news_tab_item.dart';
@@ -26,7 +27,7 @@ class _NewsViewState extends State<NewsView> {
   @override
   Widget build(BuildContext context) {
     SettingsProvider settingsProvider = Provider.of<SettingsProvider>(context);
-    
+
     if (widget.searchResult != null) {
       List<News> newsList = widget.searchResult!;
       return ListView.separated(
@@ -37,7 +38,9 @@ class _NewsViewState extends State<NewsView> {
       );
     }
     return ChangeNotifierProvider(
-      create: (_) => SourcesViewModel()..getSources(widget.categoryId!),
+      create: (_) =>
+          SourcesViewModel(ServiceLocator.sourceRepository)
+            ..getSources(widget.categoryId!),
       child: Consumer<SourcesViewModel>(
         builder: (_, viewModel, _) {
           if (viewModel.isLoading) {
@@ -78,7 +81,7 @@ class _NewsViewState extends State<NewsView> {
                   child: ChangeNotifierProvider(
                     key: ValueKey(sources[currentIndex].id),
                     create: (_) =>
-                        NewsViewModel()..getNews(sources[currentIndex].id!),
+                        NewsViewModel(ServiceLocator.newsRepository)..getNews(sources[currentIndex].id!),
                     child: Consumer<NewsViewModel>(
                       builder: (_, newsVm, _) {
                         if (newsVm.isLoading) {
