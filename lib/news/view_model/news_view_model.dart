@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:news/news/data/data_sources/news_data_source.dart';
 import 'package:news/news/data/model/news.dart';
-import 'package:news/news/data/model/news_response.dart';
+import 'package:news/news/data/repositories/news_repository.dart';
 
 class NewsViewModel with ChangeNotifier {
-  NewsDataSource dataSource = NewsDataSource();
+  NewsRepository repository = NewsRepository();
   List<News> news = [];
   List<News> search = [];
   String? errorMessage;
@@ -13,12 +12,7 @@ class NewsViewModel with ChangeNotifier {
   Future<void> getNews(String sourceId) async {
     isLoading = true;
     try {
-      NewsResponse response = await dataSource.getNews(sourceId);
-      if (response.status == 'ok' && response.newsList != null) {
-        news = response.newsList!;
-      } else {
-        errorMessage = 'Failed to get News';
-      }
+      news = await repository.getNews(sourceId);
     } catch (error) {
       errorMessage = error.toString();
     }
@@ -29,12 +23,7 @@ class NewsViewModel with ChangeNotifier {
   Future<void> searchNews(String query) async {
     isLoading = true;
     try {
-      NewsResponse response = await dataSource.searchNews(query);
-      if (response.status == 'ok' && response.newsList != null) {
-        search = response.newsList!;
-      } else {
-        errorMessage = 'No result';
-      }
+      search = await repository.searchNews(query);
     } catch (error) {
       errorMessage = error.toString();
     }

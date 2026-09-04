@@ -26,6 +26,7 @@ class _NewsViewState extends State<NewsView> {
   @override
   Widget build(BuildContext context) {
     SettingsProvider settingsProvider = Provider.of<SettingsProvider>(context);
+    
     if (widget.searchResult != null) {
       List<News> newsList = widget.searchResult!;
       return ListView.separated(

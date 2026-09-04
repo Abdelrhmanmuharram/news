@@ -14,8 +14,9 @@ class SourcesAPIDataSource implements SourcesDataSource {
       'category': categoryId,
     });
     http.Response response = await http.get(uri);
-    Map<String, dynamic> json = jsonDecode(response.body);
-    SourcesResponse sourcesResponse = SourcesResponse.fromJson(json);
+    SourcesResponse sourcesResponse = SourcesResponse.fromJson(
+      jsonDecode(response.body),
+    );
     if (sourcesResponse.status == 'ok' && sourcesResponse.sources != null) {
       return sourcesResponse.sources!;
     } else {
