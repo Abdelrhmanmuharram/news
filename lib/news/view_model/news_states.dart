@@ -8,7 +8,8 @@ class GetNewsLoading extends NewsState {}
 
 class GetNewsSuccess extends NewsState {
   List<News> news;
-  GetNewsSuccess(this.news);
+  bool isLoadingMore;
+  GetNewsSuccess(this.news, {this.isLoadingMore = false});
 }
 
 class GetNewsError extends NewsState {

@@ -25,13 +25,24 @@ class NewsView extends StatefulWidget {
 
 class _NewsViewState extends State<NewsView> {
   int currentIndex = 0;
+  String? currentSourceId;
+  ScrollController scrollController = ScrollController();
   SourcesViewModel sourcesViewModel = SourcesViewModel(
     ServiceLocator.sourceRepository,
   );
+
+  NewsViewModel? newsViewModel;
+
   @override
   void initState() {
     super.initState();
     sourcesViewModel.getSources(widget.categoryId!);
+    scrollController.addListener(() {
+      if (scrollController.position.pixels >=
+          scrollController.position.maxScrollExtent) {
+        newsViewModel?.getNews(currentSourceId!);
+      }
+    });
   }
 
   @override
@@ -57,6 +68,7 @@ class _NewsViewState extends State<NewsView> {
             return ErrorIndicator(message: state.message);
           } else if (state is GetSourcesSuccess) {
             List<Source> sources = state.sources;
+            currentSourceId = sources[currentIndex].id;
             return Column(
               children: [
                 DefaultTabController(
@@ -81,6 +93,7 @@ class _NewsViewState extends State<NewsView> {
                       if (currentIndex == index) return;
                       setState(() {
                         currentIndex = index;
+                        currentSourceId = sources[index].id;
                       });
                     },
                   ),
@@ -88,9 +101,11 @@ class _NewsViewState extends State<NewsView> {
                 Expanded(
                   child: BlocProvider(
                     key: ValueKey(sources[currentIndex].id),
-                    create: (_) =>
-                        NewsViewModel(ServiceLocator.newsRepository)
-                          ..getNews(sources[currentIndex].id!),
+                    create: (_) {
+                      newsViewModel = ServiceLocator.newsViewModel;
+                      newsViewModel!.getNews(sources[currentIndex].id!);
+                      return newsViewModel!;
+                    },
                     child: BlocBuilder<NewsViewModel, NewsState>(
                       builder: (_, state) {
                         if (state is GetNewsLoading) {
@@ -105,10 +120,19 @@ class _NewsViewState extends State<NewsView> {
                               start: 16,
                               end: 16,
                             ),
-                            itemBuilder: (_, index) =>
-                                NewsItem(news: newsList[index]),
+                            controller: scrollController,
+                            itemBuilder: (_, index) {
+                              if (index == newsList.length) {
+                                return const Padding(
+                                  padding: EdgeInsets.all(16),
+                                  child: Center(child: LoadingIndicator()),
+                                );
+                              }
+                              return NewsItem(news: newsList[index]);
+                            },
                             separatorBuilder: (_, _) => SizedBox(height: 16),
-                            itemCount: newsList.length,
+                            itemCount:
+                                newsList.length + (state.isLoadingMore ? 1 : 0),
                           );
                         } else {
                           return SizedBox();

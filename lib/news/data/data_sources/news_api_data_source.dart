@@ -8,10 +8,12 @@ import 'package:news/news/data/model/news_response.dart';
 
 class NewsAPIDataSource implements NewsDataSource {
   @override
-  Future<List<News>> getNews(String sourceId) async {
+  Future<List<News>> getNews(String sourceId, int page, int pageSize) async {
     Uri uri = Uri.https(ApiConstants.baseURL, ApiConstants.newsEndpoint, {
       'apiKey': ApiConstants.apiKey,
       'sources': sourceId,
+      'page': page.toString(),
+      'pageSize': pageSize.toString(),
     });
     http.Response response = await http.get(uri);
     Map<String, dynamic> json = jsonDecode(response.body);

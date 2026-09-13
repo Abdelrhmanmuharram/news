@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news/shared/app_theme.dart';
 
 class ErrorIndicator extends StatelessWidget {
   final String message;
@@ -6,6 +7,8 @@ class ErrorIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text(message));
+    return Center(
+      child: Text(message, style: TextStyle(color: AppTheme.white)),
+    );
   }
 }

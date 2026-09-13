@@ -5,14 +5,34 @@ import 'package:news/news/view_model/news_states.dart';
 
 class NewsViewModel extends Cubit<NewsState> {
   NewsRepository repository;
+
   NewsViewModel(this.repository) : super(NewsInitial());
 
+  int currentPage = 1;
+  int pageSize = 4;
+  List<News> news = [];
+  bool isLoadingMore = false;
+
   Future<void> getNews(String sourceId) async {
-    emit(GetNewsLoading());
+    if (isLoadingMore) return;
+    if (currentPage == 1) {
+      emit(GetNewsLoading());
+    } else {
+      isLoadingMore = true;
+      emit(GetNewsSuccess(news, isLoadingMore: true));
+    }
     try {
-      List<News> news = await repository.getNews(sourceId);
+      List<News> newsList = await repository.getNews(
+        sourceId,
+        currentPage,
+        pageSize,
+      );
+      news.addAll(newsList);
+      currentPage++;
+      isLoadingMore = false;
       emit(GetNewsSuccess(news));
     } catch (error) {
+      isLoadingMore = false;
       emit(GetNewsError(error.toString()));
     }
   }
