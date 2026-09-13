@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news/l10n/app_localizations.dart';
 import 'package:news/providers/settings_provider.dart';
-import 'package:provider/provider.dart';
 
 class ThemeBottomSheet extends StatelessWidget {
   const ThemeBottomSheet({super.key});
@@ -9,7 +9,7 @@ class ThemeBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appLocalizations = AppLocalizations.of(context)!;
-    SettingsProvider settingsProvider = Provider.of<SettingsProvider>(context);
+    SettingsProvider settingsProvider = context.read<SettingsProvider>();
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(

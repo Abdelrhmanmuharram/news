@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news/shared/app_theme.dart';
 import 'package:news/l10n/app_localizations.dart';
 import 'package:news/news/data/model/news.dart';
 import 'package:news/providers/settings_provider.dart';
-import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class FullNewsItem extends StatelessWidget {
@@ -13,7 +13,7 @@ class FullNewsItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AppLocalizations appLocalizations = AppLocalizations.of(context)!;
-    SettingsProvider settingsProvider = Provider.of<SettingsProvider>(context);
+    SettingsProvider settingsProvider = context.read()<SettingsProvider>();
     return Padding(
       padding: const EdgeInsets.all(16),
       child: Container(

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news/shared/app_theme.dart';
 import 'package:news/news/data/model/news.dart';
 import 'package:news/news/view/widgets/full_news_item.dart';
 import 'package:news/providers/settings_provider.dart';
 import 'package:news/shared/widgets/loading_indicator.dart';
-import 'package:provider/provider.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 class NewsItem extends StatelessWidget {
@@ -13,7 +13,7 @@ class NewsItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SettingsProvider settingsProvider = Provider.of<SettingsProvider>(context);
+    SettingsProvider settingsProvider = context.read<SettingsProvider>();
     TextTheme textTheme = Theme.of(context).textTheme;
     return GestureDetector(
       onTap: () {

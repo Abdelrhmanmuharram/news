@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:news/shared/app_theme.dart';
 import 'package:news/home/view/widgets/language_bottom_sheet.dart';
 import 'package:news/home/view/widgets/theme_bottom_sheet.dart';
 import 'package:news/l10n/app_localizations.dart';
 import 'package:news/providers/settings_provider.dart';
-import 'package:provider/provider.dart';
 
 class DrawerItem extends StatelessWidget {
   VoidCallback onGoToHomeClick;
@@ -14,7 +14,7 @@ class DrawerItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AppLocalizations appLocalizations = AppLocalizations.of(context)!;
-    SettingsProvider settingsProvider = Provider.of<SettingsProvider>(context);
+    SettingsProvider settingsProvider = context.read<SettingsProvider>();
     Size sizescreen = MediaQuery.sizeOf(context);
     TextTheme textTheme = Theme.of(context).textTheme;
     return Container(
