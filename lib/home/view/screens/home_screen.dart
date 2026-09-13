@@ -1,12 +1,14 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:news/categories/view/widgets/catigories_view.dart';
 import 'package:news/home/view/widgets/drawer_item.dart';
 import 'package:news/l10n/app_localizations.dart';
 import 'package:news/categories/data/model/category_model.dart';
 import 'package:news/news/view/widgets/news_view.dart';
+import 'package:news/news/view_model/news_states.dart';
 import 'package:news/news/view_model/news_view_model.dart';
 import 'package:news/shared/service_locator.dart';
 
@@ -102,7 +104,18 @@ class _HomeScreenState extends State<HomeScreen> {
           ? null
           : DrawerItem(onGoToHomeClick: resetSelectedCategoty),
       body: isSearchOpen && searchController.text.isNotEmpty
-          ? NewsView(searchResult: newsViewModel.search)
+          ? BlocProvider(
+              create: (_) => newsViewModel,
+              child: BlocBuilder<NewsViewModel, NewsState>(
+                builder: (_, state) {
+                  if (state is GetNewsSuccess) {
+                    return NewsView(searchResult: state.news);
+                  } else {
+                    return SizedBox();
+                  }
+                },
+              ),
+            )
           : selectedCategory == null
           ? CatigoriesView(onSelectedCategory: onSelectedCategory)
           : NewsView(categoryId: selectedCategory!.id),

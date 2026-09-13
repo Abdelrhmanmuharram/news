@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news/shared/app_theme.dart';
 import 'package:news/home/view/screens/home_screen.dart';
 import 'package:news/l10n/app_localizations.dart';
@@ -14,7 +15,7 @@ Future<void> main() async {
 
   runApp(
     MultiProvider(
-      providers: [ChangeNotifierProvider(create: (_) => SettingsProvider())],
+      providers: [BlocProvider(create: (_) => SettingsProvider())],
       child: NewsApp(),
     ),
   );

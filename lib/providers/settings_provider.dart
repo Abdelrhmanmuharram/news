@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:news/providers/settings_states.dart';
 import 'package:news/shared/shared_preferences_service.dart';
 
-class SettingsProvider with ChangeNotifier {
+class SettingsProvider extends Cubit<SettingsState> {
   ThemeMode themeMode = .system;
   String languageCode = 'en';
 
-  SettingsProvider() {
+  SettingsProvider() : super(SettingsInitial()) {
     loadSettings();
   }
 
@@ -17,20 +19,21 @@ class SettingsProvider with ChangeNotifier {
     if (themeMode == theme) return;
     themeMode = theme;
     SharedPreferencesService.saveTheme(theme == .dark);
-    notifyListeners();
+    emit(GetSettingsChangeTheme(themeMode));
   }
 
   void changeLanguage(String language) {
     if (languageCode == language) return;
     languageCode = language;
     SharedPreferencesService.saveLanguage(language);
-    notifyListeners();
+    emit(GetSettingsChangeLanguage(language));
   }
 
   void loadSettings() {
+    emit(GetSettingsLoading());
     bool isDark = SharedPreferencesService.getTheme();
     languageCode = SharedPreferencesService.getLanguage();
     themeMode = isDark ? .dark : .light;
-    notifyListeners();
+    emit(GetSettingsLoaded(themeMode, languageCode));
   }
 }
